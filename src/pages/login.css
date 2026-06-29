@@ -70,3 +70,8 @@ body {
 .login-btn:hover {
     background: #1e3c72;
 }
+
+.version-span {
+   position: relative;
+   top: 20px;
+}

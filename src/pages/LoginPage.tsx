@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./login.css";
 
+import pkg from "../../package.json";
+
 export default function LoginPage() {
     const [form, setForm] = useState({
         username: "",
@@ -57,6 +59,8 @@ export default function LoginPage() {
                     </button>
 
                 </form>
+
+                <span  className="version-span">vresion : {pkg.version}</span>
 
             </div>
         </div>
