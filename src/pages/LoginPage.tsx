@@ -9,6 +9,8 @@ export default function LoginPage() {
         password: ""
     });
 
+    const API = `http://localhost:9095/service/response`
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm({
             ...form,
@@ -16,10 +18,25 @@ export default function LoginPage() {
         });
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Login data:", form);
+
+        try {
+            const response = await fetch(API, {
+                method: "POST",
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const text = await response.text();
+            console.log("Response:", text);
+        } catch (error) {
+            console.error("Request failed:", error);
+        }
     };
+
 
     return (
         <div className="login-container">
