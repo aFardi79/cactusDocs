@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./login.css";
+import {useNavigate} from 'react-router-dom'
 
 import pkg from "../../package.json";
 
 export default function LoginPage() {
+    const navigate = useNavigate()
     const [form, setForm] = useState({
         username: "",
         password: ""
@@ -21,20 +23,21 @@ export default function LoginPage() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        try {
-            const response = await fetch(API, {
-                method: "POST",
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-
-            const text = await response.text();
-            console.log("Response:", text);
-        } catch (error) {
-            console.error("Request failed:", error);
-        }
+        // try {
+        //     const response = await fetch(API, {
+        //         method: "POST",
+        //     });
+        //
+        //     if (!response.ok) {
+        //         throw new Error(`HTTP ${response.status}`);
+        //     }
+        //
+        //     const text = await response.text();
+        //     console.log("Response:", text);
+        // } catch (error) {
+        //     console.error("Request failed:", error);
+        // }
+        navigate(`/base-page`)
     };
 
 
